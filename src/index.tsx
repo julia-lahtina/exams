@@ -1,1010 +1,805 @@
-/* import React from 'react'
-import ReactDOM from 'react-dom/client';
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
-
-export const Main = () => {
-    return (
-        <>
-            <h2>✅ Список тудулистов</h2>
-            <h2>📜 Список постов</h2>
-        </>
-    )
-}
-
-// App
-export const App = () => {
-    return (
-        <Routes>
-            <Route path={'/'} element={<Main />} />
-        </Routes>
-    )
-}
-
-const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
-root.render(<BrowserRouter><App /></BrowserRouter>)
-
-// 📜 Описание:
-// Белый экран... Приложение не работает.
-// Найдите и исправьте ошибку, чтобы на экране отобразилось 2 заголовка.
-// Исправленную версию строки напишите в качестве ответа.
-
-// 🖥 Пример ответа: <Route path={'/'} component={<Main/>}/> */
-
-
-/*
-
-/*
-
-import React, { useEffect } from "react";
-import { Provider, TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
-import ReactDOM from "react-dom/client";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { ThunkAction, ThunkDispatch } from "redux-thunk";
-import axios from "axios";
-import { configureStore, combineReducers } from "@reduxjs/toolkit";
-
-// Utils
-console.log = () => { };
-
-// Api
-const instance = axios.create({
-    baseURL: "xxx",
-});
-
-const api = {
-    getUsers() {
-        return instance.get("xxx");
-    },
-};
-
-// Reducer
-const initState = {
-    isLoading: false,
-    users: [] as any[],
-};
-
-type InitStateType = typeof initState;
-
-const appReducer = (state: InitStateType = initState, action: ActionsType): InitStateType => {
-    switch (action.type) {
-        case "APP/SET-USERS":
- /*            /* 1 */
-/* console.log('1')
-return { ...state, users: action.users };
-        case "APP/IS-LOADING":
-
-
-import { useFormik } from 'formik';
-// 📜 Описание:
-// Задача: напишите в какой последовательности вызовутся числа при успешном запросе.
-// Подсказка: будет 13 чисел.
-// Ответ дайте через пробел.
-
-// 🖥 Пример ответа: 1 2 3 4 5 6 7 8 9 10 1 2 3 */
-
-
-/*
-
-import { useFormik } from 'formik';
-import React from 'react'
-import ReactDOM from 'react-dom/client';
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
-
-
-// Types
-type LoginFieldsType = {
-    firstName: string
-    email: string
-}
-
-// Main
-export const Login = () => {
-
-    const formik = useFormik({
-        initialValues: {
-            firstName: '',
-            email: '',
-        },
-        validate: (values) => {
-            const errors: Partial<LoginFieldsType> = {};
-
-            if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
-                errors.email = 'Invalid email address';
-            }
-            return errors
-        },
-        onSubmit: values => {
-            alert(JSON.stringify(values, null, 2));
-        }
-    });
-
-    // Функция необходима для того, чтобы вебшторм не ругался на true в JSX
-    const getTrue = () => {
-        return true
-    }
-
-    return (
-        <form onSubmit={formik.handleSubmit}>
-            <div>
-                <input placeholder={'Введите имя'} {...formik.getFieldProps('firstName')} />
-            </div>
-            <div>
-                <input placeholder={'Введите email'}{...formik.getFieldProps('email')} />
-                {formik.errors.email && <div style={{ color: 'red' }}>{formik.errors.email}</div>}
-            </div>
-            <button type="submit">Отправить</button>
-        </form>
-    );
-}
-
-// App
-export const App = () => {
-    return (
-        <Routes>
-            <Route path={''} element={<Login />} />
-        </Routes>
-    )
-}
-
-const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
-root.render(<BrowserRouter><App /></BrowserRouter>) */
-
-// 📜 Описание:
-// Загрузив приложение вы увидите ошибку под полем email, но вы еще ничего не ввели.
-// Исправьте 46 строку кода так, чтобы:
-// 1) Сообщение об ошибке показывалось только в том случае, когда email введен некорректно.
-// 2) Вместо ERROR должен быть конкретный текст ошибки прописанный в валидации к этому полю.
-// 3) Сообщение должно показываться только в том случае, когда мы взаимодействовали с полем.
-// Исправленную версию строки напишите в качестве ответа.
-
-// 🖥 Пример ответа: {true && <div style={{color: 'red'}}>error.email</div>}
-
-
-
-
-/* import { useFormik } from 'formik';
-import React from 'react'
-import ReactDOM from 'react-dom/client';
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
-
-// Main
-export const Login = () => {
-
-    const formik = useFormik({
-        initialValues: {
-            email: '',
-            password: '',
-        },
-        onSubmit: values => {
-            alert(JSON.stringify(values, null, 2));
-        },
-    });
-
-    return (
-        <form onSubmit={formik.handleSubmit}>
-            <div>
-                <input
-                    name="email"
-                    onChange={formik.handleChange}
-                    value={formik.values.email}
-                    type="text"
-                    placeholder={'Введите email'}
-                />
-            </div>
-            <div>
-                <input
-                    name="password"
-                    onChange={formik.handleChange}
-                    value={formik.values.password}
-                    type="password"
-                    placeholder={'Введите пароль'}
-                />
-            </div>
-            <button type="submit">Отправить</button>
-        </form>
-    );
-}
-
-// App
-export const App = () => {
-    return (
-        <Routes>
-            <Route path={''} element={<Login />} />
-        </Routes>
-    )
-}
-
-const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
-root.render(<BrowserRouter><App /></BrowserRouter>) */
-
-// 📜 Описание:
-// При заполнении данных формы и их отправке вы должны увидеть alert c
-// введенными значениями, но из-за допущенной ошибки форма работает не корректно.
-// Найдите ошибку и исправленную версию строки напишите в качестве ответа.
-// ❗После того как показался alert форма не должна перегружать все приложение
-
-// 🖥 Пример ответа: alert(JSON.stringify(values))
-
-
-
-
-/* 
-import { useFormik } from 'formik';
-import React from 'react'
-import ReactDOM from 'react-dom/client';
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
-
-
-// Main
-export const Login = () => {
-
-    const formik = useFormik({
-        initialValues: {
-            firstName: '',
-            lastName: '',
-            email: '',
-            password: '',
-            phone: '',
-        },
-        onSubmit: values => {
-            alert(JSON.stringify(values, null, 2));
-        },
-    });
-
-    return (
-        <form onSubmit={formik.handleSubmit}>
-            <div>
-                <input
-                    name="firstName"
-                    onChange={formik.handleChange}
-                    value={formik.values.firstName}
-                    placeholder={'Введите имя'}
-                />
-            </div>
-            <div>
-                <input
-                    name="lastName"
-                    onChange={formik.handleChange}
-                    value={formik.values.lastName}
-                    placeholder={'Введите фамилию'}
-                />
-            </div>
-            <div>
-                <input
-                    name="email"
-                    onChange={formik.handleChange}
-                    value={formik.values.email}
-                    placeholder={'Введите email'}
-                />
-            </div>
-            <div>
-                <input
-                    name="password"
-                    onChange={formik.handleChange}
-                    value={formik.values.password}
-                    placeholder={'Введите пароль'}
-                    type={'password'}
-                />
-            </div>
-            <div>
-                <input
-                    name="phone"
-                    onChange={formik.handleChange}
-                    value={formik.values.phone}
-                    placeholder={'Введите телефон'}
-                />
-            </div>
-            <button type="submit">Отправить</button>
-        </form>
-    );
-}
-
-// App
-export const App = () => {
-    return (
-        <Routes>
-            <Route path={''} element={<Login />} />
-        </Routes>
-    )
-}
-
-const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
-root.render(<BrowserRouter><App /></BrowserRouter>)
-
-// 📜 Описание:
-// Форма заполнения данных работает некорректно.
-// Пользователи жалуются на поле ввода "Телефона"
-// Найдите в коде ошибку. Исправленную версию строки напишите в качестве ответа.
-
-// 🖥 Пример ответа: <form onSubmit={formik.handleSubmit}>
- */
-
-
-
-
-/* 
-import React from 'react'
-import ReactDOM from 'react-dom/client';
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
-
-export const Main = () => {
-    return (
-        <>
-            <h2>✅ Список тудулистов</h2>
-            <h2>📜 Список постов</h2>
-        </>
-    )
-}
-
-// App
-export const App = () => {
-
-    return (
-        <Routes>
-            <Route path={'/'} element={<Main />} />
-        </Routes>
-    )
-}
-
-
-const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
-root.render(<BrowserRouter><App /></BrowserRouter>)
-
-// 📜 Описание:
-// Приложение при старте падает с ошибкой...
-// Найдите и исправьте ошибку, чтобы на экране отобразилось 2 заголовка.
-// Исправленную версию строки напишите в качестве ответа.
-
-// 🖥 Пример ответа: type InitStateType = typeof initState */
-
-
-
-
-/* 
-
-import { useFormik } from 'formik';
-import React from 'react'
-import ReactDOM from 'react-dom/client';
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
-
-
-// Types
-type LoginFieldsType = {
-    firstName?: string
-}
-
-// Main
-export const Login = () => {
-
-    const formik = useFormik({
-        initialValues: {
-            firstName: '',
-        },
-        validate: (values) => {
-            const errors: LoginFieldsType = {};
-
-            return errors
-        },
-        onSubmit: values => {
-            alert(JSON.stringify(values, null, 2));
-        }
-    });
-
-    return (
-        <form onSubmit={formik.handleSubmit}>
-            <div>
-                <input placeholder={'Введите имя'} {...formik.getFieldProps('firstName')} />
-            </div>
-            <button type="submit" disabled={!(formik.errors.firstName && formik.errors.firstName.length < 5)}>Отправить</button>
-        </form>
-    );
-}
-
-// App
-export const App = () => {
-    return (
-        <Routes>
-            <Route path={''} element={<Login />} />
-        </Routes>
-    )
-}
-
-const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
-root.render(<BrowserRouter><App /></BrowserRouter>)
-
-// 📜 Описание:
-// Начните вводить в поле firstName символы. После ввода первого символа кнопка "Отправить" раздизаблится.
-// Задача: кнопка "Отправить" должна раздизаблиться только в том случае, если длинна имени больше, либо равна 5 символам.
-// Т.е. вам необходимо самостоятельно написать эту валидацию для поля firstName.
-// ❗ В качестве текста ошибки напишите 'Must be 5 characters or more'
-// ❗ Текст ошибки выводить не нужно (только если для себя поиграться).
-
-// В качестве ответа напишите полностью строку кода с условием.
-// 🖥 Пример ответа: return errors.firstName = 'Must be 5 characters or more'
-// ❗ Сторонние библиотеки (например yup) использовать запрещено
- */
-
-
-
-/* 
-import { useFormik } from "formik";
-import React from "react";
-import { Provider, TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
+/* import React, { ChangeEvent, useState } from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter, Route, Routes, useNavigate } from "react-router-dom";
-import axios from "axios";
 import { ThunkAction, ThunkDispatch } from "redux-thunk";
+import {
+  Provider,
+  TypedUseSelectorHook,
+  useDispatch,
+  useSelector,
+} from "react-redux";
+import axios from "axios";
 import { configureStore, combineReducers } from "@reduxjs/toolkit";
 
 // Types
 type LoginFieldsType = {
-    email: string;
-    password: string;
+  email: string;
+  password: string;
 };
 
 // API
-const instance = axios.create({ baseURL: "https://exams-frontend.kimitsu.it-incubator.io/api/" });
+const instance = axios.create({
+  baseURL: "https://exams-frontend.kimitsu.it-incubator.io/api/",
+});
 
 const api = {
-    login(data: LoginFieldsType) {
-        return instance.post("auth/login", data);
-    },
+  login(data: LoginFieldsType) {
+    return instance.post("auth/login", data);
+  },
 };
 
 // Reducer
-const initState = {
-    isLoading: false,
-    error: null as string | null,
-    isLoggedIn: false,
-};
-
+const initState = { isAuth: false };
 type InitStateType = typeof initState;
 
-const appReducer = (state: InitStateType = initState, action: ActionsType): InitStateType => {
-    switch (action.type) {
-        case "APP/SET-IS-LOGGED-IN":
-            return { ...state, isLoggedIn: action.isLoggedIn };
-        case "APP/IS-LOADING":
-            return { ...state, isLoading: action.isLoading };
-        case "APP/SET-ERROR":
-            return { ...state, error: action.error };
-        default:
-            return state;
-    }
+const appReducer = (
+  state: InitStateType = initState,
+  action: ActionsType
+): InitStateType => {
+  switch (action.type) {
+    case "SET_AUTH":
+      return { ...state, isAuth: action.isAuth };
+    default:
+      return state;
+  }
 };
 
-// Actions
-const setIsLoggedIn = (isLoggedIn: boolean) =>
-    ({ type: "APP/SET-IS-LOGGED-IN", isLoggedIn }) as const;
-const setLoadingAC = (isLoading: boolean) => ({ type: "APP/IS-LOADING", isLoading }) as const;
-const setError = (error: string | null) => ({ type: "APP/SET-ERROR", error }) as const;
-type ActionsType =
-    | ReturnType<typeof setIsLoggedIn>
-    | ReturnType<typeof setLoadingAC>
-    | ReturnType<typeof setError>;
+// Store
+const rootReducer = combineReducers({ app: appReducer });
+
+const store = configureStore({ reducer: rootReducer });
+type RootState = ReturnType<typeof store.getState>;
+type AppDispatch = ThunkDispatch<RootState, unknown, ActionsType>;
+type AppThunk<ReturnType = void> = ThunkAction<
+  ReturnType,
+  RootState,
+  unknown,
+  ActionsType
+>;
+const useAppDispatch = () => useDispatch<AppDispatch>();
+const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
+
+const setAuth = (isAuth: boolean) => ({ type: "SET_AUTH", isAuth } as const);
+type ActionsType = ReturnType<typeof setAuth>;
 
 // Thunk
 const loginTC =
-    (values: LoginFieldsType): AppThunk =>
-        (dispatch) => {
-            dispatch(setLoadingAC(true));
-            api
-                .login(values)
-                .then((res) => {
-                    dispatch(setIsLoggedIn(true));
-                    alert("Вы залогинились успешно");
+  (email: string, password: string): AppThunk =>
+  async dispatch => {
+    try {
+      await api.login({ email, password });
+      dispatch(setAuth(true));
+    } catch (e: any) {
+      alert(`❌ ${e.response.data.errors} ❌`);
+    }
+  };
 
-                })
-                .catch((e) => {
-                    dispatch(setError(e.response.data.errors));
-                })
-                .finally(() => {
-                    dispatch(setLoadingAC(false));
-                    setTimeout(() => {
-                        dispatch(setError(null));
-                    }, 3000);
-                });
-        };
+// Components
+const Login = () => {
+  const isAuth = useAppSelector(state => state.app.isAuth);
 
-// Store
-const rootReducer = combineReducers({
-    app: appReducer,
-});
+  const dispatch = useAppDispatch();
 
-const store = configureStore({ reducer: rootReducer });
-type RootState = ReturnType<typeof store.getState>;
-type AppDispatch = ThunkDispatch<RootState, unknown, ActionsType>;
-type AppThunk<ReturnType = void> = ThunkAction<ReturnType, RootState, unknown, ActionsType>;
-const useAppDispatch = () => useDispatch<AppDispatch>();
-const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
+  const navigate = useNavigate();
 
-// Loader
-export const Loader = () => {
-    return <h1>Loading ...</h1>;
+  const [email, setEmail] = useState("darrell@gmail.com");
+  const [password, setPassword] = useState("123");
+
+  const changeEmailHandler = (e: ChangeEvent<HTMLInputElement>) => {
+    setEmail(e.target.value);
+  };
+
+  const changePasswordHandler = (e: ChangeEvent<HTMLInputElement>) => {
+    setPassword(e.target.value);
+  };
+  if (isAuth) {
+    navigate("/profile");
+  }
+
+  return (
+    <div>
+      <input type={"text"} value={email} onChange={changeEmailHandler} />
+      <input
+        type={"password"}
+        value={password}
+        onChange={changePasswordHandler}
+      />
+      <button
+        disabled={!email || !password}
+        onClick={() => dispatch(loginTC(email, password))}
+      >
+        login
+      </button>
+    </div>
+  );
 };
 
-// Profile
-export const Profile = () => {
-    return <h2>😎 Profile</h2>;
-};
-
-// Login
-export const Login = () => {
-    const dispatch = useAppDispatch();
-    const navigate = useNavigate();
-
-    const error = useAppSelector((state) => state.app.error);
-    const isLoading = useAppSelector((state) => state.app.isLoading);
-    const isLoggedIn = useAppSelector((state) => state.app.isLoggedIn);
-
-    const formik = useFormik({
-        initialValues: {
-            email: "darrell@gmail.com",
-            password: "123",
-        },
-        onSubmit: (values) => {
-            dispatch(loginTC(values));
-        },
-    });
-
-    return (
-        <div>
-            {!!error && <h2 style={{ color: "red" }}>{error}</h2>}
-            {isLoading && <Loader />}
-
-            {isLoggedIn && navigate('profile')}
-            <form onSubmit={formik.handleSubmit}>
-                <div>
-                    <input placeholder={"Введите email"} {...formik.getFieldProps("email")} />
-                </div>
-                <div>
-                    <input
-                        type={"password"}
-                        placeholder={"Введите пароль"}
-                        {...formik.getFieldProps("password")}
-                    />
-                </div>
-
-                <button type="submit">
-
-                    Залогиниться</button>
-            </form>
-        </div>
-    );
-};
-
-// App
 export const App = () => {
-    return (
-        <Routes>
-            <Route path={""} element={<Login />} />
-            <Route path={"profile"} element={<Profile />} />
-        </Routes>
-    );
+  return (
+    <Routes>
+      <Route path={"/"} element={<Login />} />
+      <Route path={"/profile"} element={<h2>😎 Profile</h2>} />
+    </Routes>
+  );
 };
 
-const root = ReactDOM.createRoot(document.getElementById("root") as HTMLElement);
-root.render(
-    <Provider store={store}>
-        <BrowserRouter>
-            <App />
-        </BrowserRouter>
-    </Provider>,
+const root = ReactDOM.createRoot(
+  document.getElementById("root") as HTMLElement
 );
+root.render(
+  <BrowserRouter>
+    <Provider store={store}>
+      <App />
+    </Provider>
+  </BrowserRouter>
+); */
 
 // 📜 Описание:
-// ❗ Email и password менять не надо. Это просто тестовые данные с которыми будет происходить успешный запрос.
-// Нажмите на кнопку "Залогиниться" и вы увидели alert с успешным сообщением
-// Задача: при успешной логинизации, редиректнуть пользователя на страницу Profile.
+// ❗ Email и password менять не надо. Это тестовые данные с которыми будет происходить успешный запрос.
+// Помогите разработчику исправить код так, чтобы успешно залогиниться (и редиректнуться на Profile)
+// В качестве ответа укажите код, который необходимо добавить, чтобы реализовать данную задачу.
 
-// Напишите правильную строку кода
-// 🖥 Пример ответа:  console.log('If login => redirect to profile') */
+// 🖥 Пример ответа: navigate('/profile')
 
-
-
-
-
-
-import React, { useEffect } from "react";
-import { Provider, TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
+/* 
+import React from "react";
 import ReactDOM from "react-dom/client";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+
+export const App = () => {
+  return (
+    <div>
+      <h2>Для чего надо добавлять файлы в .gitignore ?</h2>
+      <ul>
+        <li>1 - Чтобы git удалял их историю, храня только последнюю версию</li>
+        <li>
+          2 - Чтобы git при работе с этими файлам уведомлял при их изменении
+        </li>
+        <li>3 - Чтобы git не следил за изменениями в данных файлах</li>
+        <li>
+          4 - Файл .gitignore не несет никакой смысловой нагрузки, т.к. все
+          файлы с которыми мы работаем должны отслеживаться. Соответственно
+          никакие файлы в .gitignore добавлять не нужно
+        </li>
+        <li>5 - Нет правильного ответа</li>
+      </ul>
+    </div>
+  );
+};
+
+const root = ReactDOM.createRoot(
+  document.getElementById("root") as HTMLElement
+);
+root.render(<App />);
+
+// 📜 Описание:
+// Для чего надо добавлять файлы в .gitignore ?
+// Может быть несколько вариантов ответа (ответ дайте через пробел).
+// ❗ Ответ будет засчитан как верный, только при полном правильном совпадении.
+// Если указали правильно один вариант (1),
+// а нужно было указать два варианта (1 и 2), то ответ в данном случае будет засчитан как неправильный
+
+// 🖥 Пример ответа: 1
+ */
+
+/* import ReactDOM from "react-dom/client";
+import React, { useEffect, useState } from "react";
+
+export const Mining = () => {
+  const [btc, setBtc] = useState(0);
+
+  useEffect(() => {
+    setInterval(() => {
+      // ❗❗❗ XXX ❗❗❗
+      setBtc(prevState => prevState + 1);
+    }, 1000);
+  }, []);
+
+  return <h1>🪙 BTC: {btc}</h1>;
+};
+
+const root = ReactDOM.createRoot(
+  document.getElementById("root") as HTMLElement
+);
+root.render(<Mining />);
+
+// 📜 Описание:
+// Помогите разработчику намайнить биткоинов.
+// Что-то не майнятся 😥.
+// Что необходимо написать вместо XXX чтобы биткоины майнились (каждую секунду прибавлялся 1 биткоин) ?
+// ❗В качестве переменной используйте значение prevState
+
+// 🖥 Пример ответа: btc = 1000000
+ */
+/* 
+import React, { useEffect } from "react";
+import ReactDOM from "react-dom/client";
 import { ThunkAction, ThunkDispatch } from "redux-thunk";
+import {
+  Provider,
+  TypedUseSelectorHook,
+  useDispatch,
+  useSelector,
+} from "react-redux";
+import {
+  BrowserRouter,
+  Navigate,
+  Route,
+  Routes,
+  useNavigate,
+} from "react-router-dom";
 import axios from "axios";
 import { configureStore, combineReducers } from "@reduxjs/toolkit";
 
-// Utils
-console.log = () => { };
-
-// Api
+// API
 const instance = axios.create({
-    baseURL: "xxx",
+  baseURL: "https://exams-frontend.kimitsu.it-incubator.io/api/",
 });
 
 const api = {
-    getUsers() {
-        return instance.get("xxx");
-    },
+  me() {
+    return instance.get("auth/me?delay=3");
+  },
 };
 
 // Reducer
 const initState = {
-    isLoading: false,
-    users: [] as any[],
+  isInitialized: false,
+  isLoading: false,
+  isLoggedIn: false,
 };
-
 type InitStateType = typeof initState;
 
-const appReducer = (state: InitStateType = initState, action: ActionsType): InitStateType => {
-    switch (action.type) {
-        case "APP/SET-USERS":
-            /* 1 */
-            return { ...state, users: action.users };
-        case "APP/IS-LOADING":
-            /* 2 */
-            return { ...state, isLoading: action.isLoading };
-        default:
-            return state;
-    }
-};
-
-// Actions
-const setUsersAC = (users: any[]) => ({ type: "APP/SET-USERS", users }) as const;
-const setLoadingAC = (isLoading: boolean) => ({ type: "APP/IS-LOADING", isLoading }) as const;
-type ActionsType = ReturnType<typeof setUsersAC> | ReturnType<typeof setLoadingAC>;
-
-// Thunk
-const getUsersTC = (): AppThunk => (dispatch) => {
-    /* 3 */
-    dispatch(setLoadingAC(true));
-    api.getUsers().then((res) => {
-        /* 4 */
-        dispatch(setLoadingAC(false));
-        /* 5 */
-        dispatch(setUsersAC(res.data.data));
-    });
+const appReducer = (
+  state: InitStateType = initState,
+  action: ActionsType
+): InitStateType => {
+  switch (action.type) {
+    case "SET_IS_INITIALIZED":
+      return { ...state, isInitialized: action.isInitialized };
+    case "SET_LOADING":
+      return { ...state, isLoading: action.isLoading };
+    case "SET_IS_LOGGED_IN":
+      return { ...state, isLoggedIn: action.isLoggedIn };
+    default:
+      return state;
+  }
 };
 
 // Store
-const rootReducer = combineReducers({
-    app: appReducer,
-});
+const rootReducer = combineReducers({ app: appReducer });
 
 const store = configureStore({ reducer: rootReducer });
 type RootState = ReturnType<typeof store.getState>;
 type AppDispatch = ThunkDispatch<RootState, unknown, ActionsType>;
-type AppThunk<ReturnType = void> = ThunkAction<ReturnType, RootState, unknown, ActionsType>;
+type AppThunk<ReturnType = void> = ThunkAction<
+  ReturnType,
+  RootState,
+  unknown,
+  ActionsType
+>;
 const useAppDispatch = () => useDispatch<AppDispatch>();
 const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
 
-// Loader
-export const Loader = () => {
-    /* 6 */
-    return <h1>Loading ...</h1>;
+const setIsInitialized = (isInitialized: boolean) =>
+  ({ type: "SET_IS_INITIALIZED", isInitialized } as const);
+const setLoading = (isLoading: boolean) =>
+  ({ type: "SET_LOADING", isLoading } as const);
+const setIsLoggedIn = (isLoggedIn: boolean) =>
+  ({ type: "SET_IS_LOGGED_IN", isLoggedIn } as const);
+type ActionsType =
+  | ReturnType<typeof setLoading>
+  | ReturnType<typeof setIsInitialized>
+  | ReturnType<typeof setIsLoggedIn>;
+
+// Thunk
+const me = (): AppThunk => async dispatch => {
+  dispatch(setLoading(true));
+  api
+    .me()
+    .then(res => {
+      dispatch(setIsLoggedIn(true));
+    })
+    .finally(() => {
+      dispatch(setLoading(false));
+      dispatch(setIsInitialized(true));
+    });
 };
 
-// Login
-export const Login = () => {
-    /* 7 */
+// Components
+const Loader = () => <h2>🔘 Крутилка...</h2>;
 
-    const users = useAppSelector((state) => state.app.users);
-    const isLoading = useAppSelector((state) => state.app.isLoading);
+const Login = () => {
+  const isInitialized = useAppSelector(state => state.app.isInitialized);
+  const isLoading = useAppSelector(state => state.app.isLoading);
+  const isLoggedIn = useAppSelector(state => state.app.isLoggedIn);
 
-    return (
-        <div>
-            {isLoading && <Loader />}
-            {users.map((u) => (
-                <p key={u.id}>{u.email}</p>
-            ))}
-            <h1>
-                В данном задании на экран смотреть не нужно. Рекомендуем взять ручку, листик и
-                последовательно, спокойно расставить цифры в нужном порядке. Прежде чем давать ответ
-                обязательно посчитайте к-во цифр и сверьте с подсказкой. Удачи 🚀
-            </h1>
-        </div>
-    );
+  if (isLoggedIn) {
+    return <Navigate to={"/"} />;
+  }
+
+  return <h2>🐣 Login</h2>;
+};
+const Profile = () => {
+  const isInitialized = useAppSelector(state => state.app.isInitialized);
+  const isLoading = useAppSelector(state => state.app.isLoading);
+  const isLoggedIn = useAppSelector(state => state.app.isLoggedIn);
+
+  if (!isLoggedIn) {
+    return <Navigate to={"/login"} />;
+  }
+
+  return <h2>😎 Profile </h2>;
 };
 
-// App
 export const App = () => {
-    /* 8 */
-    const dispatch = useAppDispatch();
+  const isInitialized = useAppSelector(state => state.app.isInitialized);
+  const isLoading = useAppSelector(state => state.app.isLoading);
+  const isLoggedIn = useAppSelector(state => state.app.isLoggedIn);
 
-    useEffect(() => {
-        /* 9 */
-        dispatch(getUsersTC());
-    }, []);
+  const dispatch = useAppDispatch();
 
-    /* 10 */
-    return (
-        <Routes>
-            <Route path={""} element={<Login />} />
-        </Routes>
-    );
+  useEffect(() => {
+    dispatch(me());
+    dispatch(setIsInitialized(true));
+  }, []);
+
+  return (
+    <Routes>
+      <Route path={"/"} element={<Profile />} />
+      <Route path={"login"} element={<Login />} />
+    </Routes>
+  );
 };
 
-const root = ReactDOM.createRoot(document.getElementById("root") as HTMLElement);
+const root = ReactDOM.createRoot(
+  document.getElementById("root") as HTMLElement
+);
 root.render(
+  <BrowserRouter>
     <Provider store={store}>
-        <BrowserRouter>
-            <App />
-        </BrowserRouter>
-    </Provider>,
+      <App />
+    </Provider>
+  </BrowserRouter>
 );
 
 // 📜 Описание:
-// Задача: напишите в какой последовательности вызовутся числа при успешном запросе.
-// Подсказка: будет 13 чисел.
-// Ответ дайте через пробел.
+// После старта / обновления приложения мы видим Login, а потом через 3 секунды Profile
+// Но это плохое поведение.
+// Ваша задача написать код при котором пользователя не будет редиректить на Login,
+// пока приложение не проинициализировано,
+// а во время ожидания ответа с сервера он будет видеть Loader
 
-// 🖥 Пример ответа: 1 2 3 4 5 6 7 8 9 10 1 2 3
+// 🖥 Пример ответа: <Loader/>
+ */
+/* 
+import React from "react";
+import ReactDOM from "react-dom/client";
 
-
-
-
-
-
-import { useFormik } from 'formik';
-import React from 'react'
-import ReactDOM from 'react-dom/client';
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
-
-
-// Types
-type LoginFieldsType = {
-    firstName: string
-    email: string
-}
-
-// Main
-export const Login = () => {
-
-    const formik = useFormik({
-        initialValues: {
-            firstName: '',
-            email: '',
-        },
-        validate: (values) => {
-            const errors: Partial<LoginFieldsType> = {};
-
-            if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
-                errors.email = 'Invalid email address';
-            }
-            return errors
-        },
-        onSubmit: values => {
-            alert(JSON.stringify(values, null, 2));
-        }
-    });
-
-    // Функция необходима для того, чтобы вебшторм не ругался на true в JSX
-    const getTrue = () => {
-        return true
-    }
-
-    return (
-        <form onSubmit={formik.handleSubmit}>
-            <div>
-                <input placeholder={'Введите имя'} {...formik.getFieldProps('firstName')} />
-            </div>
-            <div>
-                <input placeholder={'Введите email'}{...formik.getFieldProps('email')} />
-                {getTrue() && <div style={{ color: 'red' }}>ERROR</div>}
-            </div>
-            <button type="submit">Отправить</button>
-        </form>
-    );
-}
-
-// App
 export const App = () => {
-    return (
-        <Routes>
-            <Route path={''} element={<Login />} />
-        </Routes>
-    )
-}
+  return (
+    <div>
+      <h2>
+        Что нужно прописать в консоли, чтобы создать новую ветку с названием
+        login и перейти на нее ?
+      </h2>
+    </div>
+  );
+};
 
-const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
-root.render(<BrowserRouter><App /></BrowserRouter>)
+const root = ReactDOM.createRoot(
+  document.getElementById("root") as HTMLElement
+);
+root.render(<App />);
 
 // 📜 Описание:
-// Загрузив приложение вы увидите ошибку под полем email, но вы еще ничего не ввели.
-// Исправьте 46 строку кода так, чтобы:
-// 1) Сообщение об ошибке показывалось только в том случае, когда email введен некорректно.
-// 2) Вместо ERROR должен быть конкретный текст ошибки прописанный в валидации к этому полю.
-// 3) Сообщение должно показываться только в том случае, когда мы взаимодействовали с полем.
-// Исправленную версию строки напишите в качестве ответа.
+// Что нужно прописать в консоли, чтобы создать новую ветку с названием login и перейти на нее ?
+//❗Ответ написать одной командой
 
-// 🖥 Пример ответа: {true && <div style={{color: 'red'}}>error.email</div>}
-
-
-
-
-
-
-
-import React, { useEffect } from "react";
-import { Provider, TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
+// 🖥 Пример ответа: git create login ---> git checkout -b login!!!!
+ */
+/* 
 import ReactDOM from "react-dom/client";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import {
+  BrowserRouter,
+  Route,
+  Routes,
+  useNavigate,
+  useParams,
+} from "react-router-dom";
+import React from "react";
+
+type UserType = {
+  id: number;
+  name: string;
+  avatar: string;
+  age: number;
+  address: string;
+};
+
+const users: UserType[] = [
+  {
+    id: 1,
+    name: "my Name",
+    age: 32,
+    avatar: "—ฅ/ᐠ.̫ .ᐟ\\ฅ—",
+    address: "my Address",
+  },
+  {
+    id: 2,
+    name: "John",
+    age: 22,
+    avatar: ":)",
+    address: "California",
+  },
+  {
+    id: 3,
+    name: "Mike",
+    age: 18,
+    avatar: "^._.^",
+    address: "New York",
+  },
+  {
+    id: 4,
+    name: "Emma",
+    age: 38,
+    avatar: "/ᐠ-ꞈ-ᐟ\\",
+    address: "Washington",
+  },
+];
+
+const StartPage = () => {
+  const navigate = useNavigate();
+  const friends = users.filter(u => u.id !== 1);
+
+  const mappedFriends = friends.map((f, i) => {
+    const go = () => {
+      navigate("/friend/" + f.id);
+    };
+
+    return (
+      <div
+        key={i}
+        onClick={go}
+        style={{ paddingLeft: 24, color: "blue", cursor: "pointer" }}
+      >
+        {f.name}, {f.age}
+      </div>
+    );
+  });
+
+  return (
+    <div>
+      <h2>🙂 My profile</h2>
+      <Profile userId={1} />
+      <hr />
+      <h2>👪 Friends</h2>
+      {mappedFriends}
+    </div>
+  );
+};
+const Profile: React.FC<{ userId?: number }> = ({ userId }) => {
+  const { id } = useParams<{ id: string }>();
+  const user = users.find(u => u.id === +(id || userId || 0));
+
+  return (
+    <div>
+      <div>
+        <b>avatar</b> {user?.avatar}
+      </div>
+      <div>
+        <div>
+          <b>name</b>: {user?.name}
+        </div>
+        <div>
+          <b>age</b>: {user?.age}
+        </div>
+        <div>
+          <b>address</b>: {user?.address}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export const Friends = () => {
+  return (
+    <Routes>
+      <Route path={"/"} element={<StartPage />} />
+      <Route path={"friend/:id"} element={<Profile />} />
+      <Route path={"*"} element={<div>❌404 Page Not Found❌</div>} />
+    </Routes>
+  );
+};
+
+const root = ReactDOM.createRoot(
+  document.getElementById("root") as HTMLElement
+);
+root.render(
+  <BrowserRouter>
+    <Friends />
+  </BrowserRouter>
+);
+
+// 📜 Описание:
+// При загрузке приложения на экране отображается
+// профиль пользователя и список друзей.
+// Если кликнуть на пользователя, то видим ❌404 Page Not Found❌
+// Исправьте код, чтобы по клику на пользователя
+// отображалась странице с информацией о друге.
+// В качестве ответа укажите исправленную строку кода.
+//
+// 🖥 Пример ответа: <Profile userId={4}/>
+ */
+/* 
+import ReactDOM from "react-dom/client";
+import React, { useEffect, useState } from "react";
+import {
+  BrowserRouter,
+  Route,
+  Routes,
+  useNavigate,
+  useParams,
+} from "react-router-dom";
+
+const newSum = 1000;
+
+const Login = () => {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    navigate(`/balance/${newSum}`);
+  }, []);
+
+  return <h1>Login</h1>;
+};
+
+const Balance = () => {
+  const [balance, setBalance] = useState(500);
+
+  const params = useParams();
+
+  useEffect(() => {
+    if (params.bonus) {
+      // ❗❗❗ XXX ❗❗❗
+      setBalance(parseInt(params.bonus));
+    }
+  }, []);
+
+  return <h1>💵 balance: {balance}</h1>;
+};
+
+export const Bank = () => {
+  return (
+    <Routes>
+      <Route path={"/"} element={<Login />} />
+      <Route path={"/balance/:bonus"} element={<Balance />} />
+    </Routes>
+  );
+};
+
+const root = ReactDOM.createRoot(
+  document.getElementById("root") as HTMLElement
+);
+root.render(
+  <BrowserRouter>
+    <Bank />
+  </BrowserRouter>
+);
+
+// 📜 Описание:
+// Перед вами баланс равный 500.
+// Ваша задача вместо XXX написать код,
+// в результате которого баланс увеличится на сумму указанную в роуте.
+
+// 🖥 Пример ответа: balance = newSum
+ */
+/* 
+import React, { useEffect } from "react";
+import ReactDOM from "react-dom/client";
+import {
+  BrowserRouter,
+  Route,
+  Routes,
+  useNavigate,
+  useParams,
+} from "react-router-dom";
+
+const Login = () => {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    navigate("/secret/JIUzI1NiIsInR5cCI6IkpXVCJ9");
+  }, []);
+
+  return <div>Login</div>;
+};
+const SecretToken = () => {
+  const { token } = useParams(); // FIX
+
+  return <h1>🦾 token: {token}</h1>;
+};
+
+export const App = () => {
+  return (
+    <Routes>
+      <Route path={"/"} element={<Login />} />
+      <Route path={"/secret/:token"} element={<SecretToken />} />
+    </Routes>
+  );
+};
+
+const root = ReactDOM.createRoot(
+  document.getElementById("root") as HTMLElement
+);
+root.render(
+  <BrowserRouter>
+    <App />
+  </BrowserRouter>
+);
+
+// 📜Описание:
+// Исправьте код на 17 строке так, чтобы на странице отобразился токен.
+
+//❗Ответ можно указывать с типизацией и без. Учтено несколько вариантов
+// 🖥 Пример ответа: const token = '123'
+ */
+
+//-------------4--------------------------------------------------------------------------------------------------------------------------
+import React, { useEffect } from "react";
+import ReactDOM from "react-dom/client";
 import { ThunkAction, ThunkDispatch } from "redux-thunk";
+import {
+  Provider,
+  TypedUseSelectorHook,
+  useDispatch,
+  useSelector,
+} from "react-redux";
+import {
+  BrowserRouter,
+  Navigate,
+  Route,
+  Routes,
+  useNavigate,
+} from "react-router-dom";
 import axios from "axios";
 import { configureStore, combineReducers } from "@reduxjs/toolkit";
 
-// Utils
-console.log = () => { };
-
-// Api
+// API
 const instance = axios.create({
-    baseURL: "xxx",
+  baseURL: "https://exams-frontend.kimitsu.it-incubator.io/api/",
 });
 
 const api = {
-    getUsers() {
-        /* 1 */
-        return instance.get("xxx");
-    },
+  me() {
+    return instance.get("auth/me?delay=3");
+  },
 };
 
 // Reducer
 const initState = {
-    isLoading: false,
-    users: [] as any[],
+  isInitialized: false,
+  isLoading: false,
+  isLoggedIn: false,
 };
-
 type InitStateType = typeof initState;
 
-const appReducer = (state: InitStateType = initState, action: ActionsType): InitStateType => {
-    switch (action.type) {
-        case "APP/SET-USERS":
-            /* 2 */
-            return { ...state, users: action.users };
-        default:
-            return state;
-    }
-};
-
-// Actions
-const setUsersAC = (users: any[]) => ({ type: "APP/SET-USERS", users }) as const;
-type ActionsType = ReturnType<typeof setUsersAC>;
-
-// Thunk
-const getUsersTC = (): AppThunk => (dispatch) => {
-    /* 3 */
-    api.getUsers().then((res) => {
-        /* 4 */
-        dispatch(setUsersAC(res.data.data));
-    });
+const appReducer = (
+  state: InitStateType = initState,
+  action: ActionsType
+): InitStateType => {
+  switch (action.type) {
+    case "SET_IS_INITIALIZED":
+      return { ...state, isInitialized: action.isInitialized };
+    case "SET_LOADING":
+      return { ...state, isLoading: action.isLoading };
+    case "SET_IS_LOGGED_IN":
+      return { ...state, isLoggedIn: action.isLoggedIn };
+    default:
+      return state;
+  }
 };
 
 // Store
-const rootReducer = combineReducers({
-    app: appReducer,
-});
+const rootReducer = combineReducers({ app: appReducer });
 
 const store = configureStore({ reducer: rootReducer });
 type RootState = ReturnType<typeof store.getState>;
 type AppDispatch = ThunkDispatch<RootState, unknown, ActionsType>;
-type AppThunk<ReturnType = void> = ThunkAction<ReturnType, RootState, unknown, ActionsType>;
+type AppThunk<ReturnType = void> = ThunkAction<
+  ReturnType,
+  RootState,
+  unknown,
+  ActionsType
+>;
 const useAppDispatch = () => useDispatch<AppDispatch>();
 const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
 
-// Login
-export const Login = () => {
-    const users = useAppSelector((state) => state.app.users);
-    /* 5 */
+const setIsInitialized = (isInitialized: boolean) =>
+  ({ type: "SET_IS_INITIALIZED", isInitialized } as const);
+const setLoading = (isLoading: boolean) =>
+  ({ type: "SET_LOADING", isLoading } as const);
+const setIsLoggedIn = (isLoggedIn: boolean) =>
+  ({ type: "SET_IS_LOGGED_IN", isLoggedIn } as const);
+type ActionsType =
+  | ReturnType<typeof setLoading>
+  | ReturnType<typeof setIsInitialized>
+  | ReturnType<typeof setIsLoggedIn>;
 
-    return (
-        <div>
-            {/* 6 */}
-            {users.map((u) => (
-                <p key={u.id}>{u.email}</p>
-            ))}
-            <h1>
-                В данном задании на экран смотреть не нужно. Рекомендуем взять ручку, листик и
-                последовательно, спокойно расставить цифры в нужном порядке. Прежде чем давать ответ
-                обязательно посчитайте к-во цифр и сверьте с подсказкой. Удачи 🚀
-            </h1>
-        </div>
-    );
+// Thunk
+const me = (): AppThunk => async dispatch => {
+  dispatch(setLoading(true));
+  api
+    .me()
+    .then(res => {
+      dispatch(setIsLoggedIn(true));
+    })
+    .finally(() => {
+      dispatch(setLoading(false));
+      dispatch(setIsInitialized(true));
+    });
 };
 
-// App
+// Components
+const Loader = () => <h2>🔘 Крутилка...</h2>;
+
+const Login = () => {
+  const isInitialized = useAppSelector(state => state.app.isInitialized);
+  const isLoading = useAppSelector(state => state.app.isLoading);
+  const isLoggedIn = useAppSelector(state => state.app.isLoggedIn);
+
+  if (isLoggedIn) {
+    return <Navigate to={"/"} />;
+  }
+
+  return <h2>🐣 Login</h2>;
+};
+const Profile = () => {
+  const isInitialized = useAppSelector(state => state.app.isInitialized);
+  const isLoading = useAppSelector(state => state.app.isLoading);
+  const isLoggedIn = useAppSelector(state => state.app.isLoggedIn);
+
+  if (!isLoggedIn) {
+    return <Navigate to={"/login"} />;
+  }
+
+  return <h2>😎 Profile </h2>;
+};
+
 export const App = () => {
-    /* 7 */
-    const dispatch = useAppDispatch();
+  const isInitialized = useAppSelector(state => state.app.isInitialized);
+  const isLoading = useAppSelector(state => state.app.isLoading);
+  const isLoggedIn = useAppSelector(state => state.app.isLoggedIn);
 
-    useEffect(() => {
-        /* 8 */
-        dispatch(getUsersTC());
-    }, []);
+  const dispatch = useAppDispatch();
 
-    /* 9 */
-    return (
-        <Routes>
-            <Route path={""} element={<Login />} />
-        </Routes>
-    );
+  useEffect(() => {
+    dispatch(me());
+  }, []);
+
+  return (
+    <Routes>
+      <Route path={"/"} element={<Profile />} />
+      <Route path={"login"} element={<Login />} />
+    </Routes>
+  );
 };
 
-const root = ReactDOM.createRoot(document.getElementById("root") as HTMLElement);
+const root = ReactDOM.createRoot(
+  document.getElementById("root") as HTMLElement
+);
 root.render(
+  <BrowserRouter>
     <Provider store={store}>
-        <BrowserRouter>
-            <App />
-        </BrowserRouter>
-    </Provider>,
+      <App />
+    </Provider>
+  </BrowserRouter>
 );
 
 // 📜 Описание:
-// Задача: напишите в какой последовательности вызовутся числа при успешном запросе.
-// Подсказка: будет 11 чисел.
-// Ответ дайте через пробел.
+// После старта / обновления приложения мы видим Login, а потом через 3 секунды Profile
+// Но это плохое поведение.
+// Ваша задача написать код при котором пользователя не будет редиректить на Login,
+// пока приложение не проинициализировано,
+// а во время ожидания ответа с сервера он будет видеть Loader
 
-// 🖥 Пример ответа: 1 2 3 4 5 6 7 8 9 1 2
-
-
-
-
-
-
-import { useFormik } from 'formik';
-import React from 'react'
-import ReactDOM from 'react-dom/client';
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
-
-
-// Types
-type LoginFieldsType = {
-    firstName?: string
-}
-
-// Main
-export const Login = () => {
-
-    const formik = useFormik({
-        initialValues: {
-            firstName: '',
-        },
-        validate: (values) => {
-            const errors: LoginFieldsType = {};
-            return errors
-        },
-        onSubmit: values => {
-            alert(JSON.stringify(values, null, 2));
-        }
-    });
-
-    return (
-        <form onSubmit={formik.handleSubmit}>
-            <div>
-                <input placeholder={'Введите имя'} {...formik.getFieldProps('firstName')} />
-            </div>
-            <button type="submit" disabled={!(formik.isValid && formik.dirty)}>Отправить</button>
-        </form>
-    );
-}
-
-// App
-export const App = () => {
-    return (
-        <Routes>
-            <Route path={''} element={<Login />} />
-        </Routes>
-    )
-}
-
-const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
-root.render(<BrowserRouter><App /></BrowserRouter>)
-
-// 📜 Описание:
-// Начните вводить в поле firstName символы. После ввода первого символа кнопка "Отправить" раздизаблится.
-// Задача: кнопка "Отправить" должна раздизаблиться только в том случае, если длинна имени больше, либо равна 5 символам.
-// Т.е. вам необходимо самостоятельно написать эту валидацию для поля firstName.
-// ❗ В качестве текста ошибки напишите 'Must be 5 characters or more'
-// ❗ Текст ошибки выводить не нужно (только если для себя поиграться).
-
-// В качестве ответа напишите полностью строку кода с условием.
-// 🖥 Пример ответа: return errors.firstName = 'Must be 5 characters or more'
-// ❗ Сторонние библиотеки (например yup) использовать запрещено
+// 🖥 Пример ответа: <Loader/>
